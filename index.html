@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الصوت الذهبي للطيور | الباقة الكاملة</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#080808;color:#f5f0e6;font-family:Arial,sans-serif}
+.wrap{max-width:900px;margin:auto;padding:24px}
+.hero{text-align:center;padding:58px 15px 35px}
+.badge{display:inline-block;border:1px solid #b9964a;border-radius:999px;padding:7px 14px;color:#d7b86a}
+h1{font-size:42px;margin:18px 0 10px}p{color:#bdb7aa;line-height:1.8}
+.price{font-size:42px;color:#e3c06a;font-weight:800;margin:20px}
+.card{background:#111;border:1px solid #29251d;border-radius:22px;padding:24px;margin:18px 0}
+.sound{display:flex;align-items:center;gap:15px;justify-content:space-between;border-bottom:1px solid #29251d;padding:17px 0}
+.sound:last-child{border:0}.sound h3{margin:0 0 7px}.preview{width:270px;max-width:48%}
+button{width:100%;border:0;border-radius:14px;padding:16px;background:#d5b35d;color:#111;font-size:18px;font-weight:800;cursor:pointer}
+input{width:100%;padding:14px;border-radius:12px;border:1px solid #38342b;background:#090909;color:white;margin:7px 0 14px}
+.small{font-size:13px;color:#8f8a80}.notice{border-right:3px solid #d5b35d;padding:10px 15px}.wish-number{font-size:30px;letter-spacing:2px;font-weight:900;color:#e3c06a;text-align:center;margin:16px 0}.protection{border-color:#30291c}
+footer{text-align:center;color:#777;padding:35px}
+@media(max-width:650px){h1{font-size:31px}.sound{display:block}.preview{max-width:100%;width:100%;margin-top:12px}}
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<div class="badge">الصوت الذهبي للطيور</div>
+<h1>الباقة الكاملة 🐦</h1>
+<p>٤ أصوات أصلية للطيور — معاينة ٥ ثواني من كل صوت</p>
+<div class="price">45$</div>
+</section>
+
+<section class="card">
+<h2>🎧 اسمع المعاينة</h2>
+<div class="sound"><div><h3>تيّان</h3><span class="small">معاينة مجانية — ٥ ثواني</span></div><audio class="preview" controls preload="none" src="preview/tayan-preview-5sec.mp3"></audio></div>
+<div class="sound"><div><h3>سمّن</h3><span class="small">معاينة مجانية — ٥ ثواني</span></div><audio class="preview" controls preload="none" src="preview/saman-preview-5sec.mp3"></audio></div>
+<div class="sound"><div><h3>إم صفيدي</h3><span class="small">معاينة مجانية — ٥ ثواني</span></div><audio class="preview" controls preload="none" src="preview/em-safidi-preview-5sec.mp3"></audio></div>
+<div class="sound"><div><h3>وَروَر</h3><span class="small">معاينة مجانية — ٥ ثواني</span></div><audio class="preview" controls preload="none" src="preview/warwar-preview-5sec.mp3"></audio></div>
+</section>
+
+<section class="card">
+<h2>💳 الدفع عبر Whish Money</h2>
+<div class="notice">
+<p><b>السعر النهائي: <span dir="ltr">$45</span></b></p>
+<p>حوّل <span dir="ltr">$45</span> عبر Whish Money إلى الرقم:</p>
+<p class="wish-number" dir="ltr" style="direction:ltr;unicode-bidi:isolate;display:inline-block;">76 361 919</p>
+<p>بعد التحويل، عبّي بياناتك ورقم الـ LTN. الطلب يبقى <b>بانتظار تأكيد الدفع</b> إلى أن يتم التحقق من التحويل يدويًا.</p>
+</div>
+<form onsubmit="submitOrder(event)">
+<label>الاسم</label><input id="name" required>
+<label>رقم الهاتف</label><input id="phone" required>
+<label>LTN / Reference</label><input id="ltn" required>
+<button type="submit">إرسال الطلب — <span dir="ltr">$45</span></button>
+</form>
+<p id="status" class="small"></p>
+</section>
+
+<section class="card protection">
+<h2>🔒 حماية المحتوى</h2>
+<p><b>شو بصير بعد الدفع؟</b></p>
+<p>بعد ما تبعت التحويل وتدخل رقم الـ LTN، بيتم مراجعة الدفع يدويًا. <b>ما بينفتح أي صوت كامل قبل تأكيد الدفع.</b></p>
+<p>المتاح قبل الشراء هو فقط <b>معاينة 5 ثواني</b> من كل صوت. الأصوات الكاملة محفوظة بشكل منفصل، وبعد تأكيد الدفع فقط بيتم إعطاء المشتري صلاحية الوصول إليها.</p>
+<p class="small">ملاحظة: النسخة الحالية هي نموذج أولي. للحماية الفعلية عند نشر الموقع، لازم نربطها بباك-إند وتخزين خاص بدل الملفات العامة وبدل localStorage.</p>
+</section>
+<footer>Gold Sound for Birds — الصوت الذهبي للطيور</footer>
+</div>
+<script>
+const SUPABASE_URL = "https://rddxmqamoxbgnelfalyf.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Buh2FHFZxwA7LlQwYcLaPw_IN-W0qY6";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+async function submitOrder(e){
+ e.preventDefault();
+ const customerName = document.getElementById("name").value.trim();
+ const phoneNumber = document.getElementById("phone").value.trim();
+ const ltnValue = document.getElementById("ltn").value.trim();
+ const statusEl = document.getElementById("status");
+ statusEl.textContent = "جاري إرسال الطلب...";
+ const { data, error } = await supabaseClient.rpc("create_order", {
+  p_customer_name: customerName,
+  p_phone: phoneNumber,
+  p_ltn: ltnValue
+ });
+ if (error) {
+  console.error(error);
+  statusEl.textContent = "صار خطأ بإرسال الطلب. جرّب مرة تانية.";
+  return;
+ }
+ statusEl.textContent = "تم إرسال الطلب. الحالة: بانتظار تأكيد الدفع. لن يتم فتح الأصوات الكاملة قبل تأكيد الدفع.";
+ if (data && data.delivery_token) { localStorage.setItem("gold_sound_delivery_token", data.delivery_token); }
+ if (data && data.delivery_token) { localStorage.setItem("gold_sound_delivery_token", data.delivery_token); }
+ e.target.reset();
+}
+</script>
+<div id="fullAudioBox" style="display:block;text-align:center;margin:25px 0;"><button id="openFullAudio" type="button">فتح الأصوات الكاملة</button><p id="audioStatus"></p><div id="fullAudioLinks"></div></div><script>document.getElementById("openFullAudio").onclick=async function(){const token=localStorage.getItem("gold_sound_delivery_token");const s=document.getElementById("audioStatus");if(!token){s.textContent="ما في طلب محفوظ على هيدا الجهاز.";return;}s.textContent="جاري التحقق من الدفع...";try{const r=await fetch("https://rddxmqamoxbgnelfalyf.supabase.co/functions/v1/get-audio",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})});const data=await r.json();if(!r.ok){s.textContent="خطأ "+r.status+": "+(data.error||"Unknown error");return;}s.textContent="تم تأكيد الدفع. الروابط صالحة لمدة 5 دقائق.";document.getElementById("fullAudioLinks").innerHTML=data.audio.map(a=>"<p><a href=\""+a.url+"\" target=\"_blank\">فتح "+a.file+"</a></p>").join("");}catch(e){s.textContent="صار خطأ بالاتصال.";}}</script></body></html>
