@@ -92,4 +92,55 @@ async function submitOrder(e){
  e.target.reset();
 }
 </script>
-<div id="fullAudioBox" style="display:block;text-align:center;margin:25px 0;"><button id="openFullAudio" type="button">فتح الأصوات الكاملة</button><p id="audioStatus"></p><div id="fullAudioLinks"></div></div><script>document.getElementById("openFullAudio").onclick=async function(){const token=localStorage.getItem("gold_sound_delivery_token");const s=document.getElementById("audioStatus");if(!token){s.textContent="ما في طلب محفوظ على هيدا الجهاز.";return;}s.textContent="جاري التحقق من الدفع...";try{const r=await fetch("https://rddxmqamoxbgnelfalyf.supabase.co/functions/v1/get-audio",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})});const data=await r.json();if(!r.ok){s.textContent="خطأ "+r.status+": "+(data.error||"Unknown error");return;}s.textContent="تم تأكيد الدفع. الروابط صالحة لمدة 5 دقائق.";document.getElementById("fullAudioLinks").innerHTML=data.audio.map(a=>"<p><a href=\""+a.url+"\" target=\"_blank\">فتح "+a.file+"</a></p>").join("");}catch(e){s.textContent="صار خطأ بالاتصال.";}}</script></body></html>
+<div id="fullAudioBox" style="display:block;text-align:center;margin:25px 0;">
+  <button id="openFullAudio" type="button">تنزيل الأصوات الكاملة</button>
+  <p id="audioStatus"></p>
+  <div id="fullAudioLinks"></div>
+</div>
+
+<script>
+document.getElementById("openFullAudio").onclick = async function(){
+
+  const token = localStorage.getItem("gold_sound_delivery_token");
+  const s = document.getElementById("audioStatus");
+
+  if(!token){
+    s.textContent = "ما في طلب محفوظ على هيدا الجهاز.";
+    return;
+  }
+
+  s.textContent = "جاري التحقق من الدفع...";
+
+  try {
+    const r = await fetch(
+      "https://rddxmqamoxbgnelfalyf.supabase.co/functions/v1/get-audio",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({token})
+      }
+    );
+
+    const data = await r.json();
+
+    if(!r.ok){
+      s.textContent = "ما تم تأكيد الدفع بعد.";
+      return;
+    }
+
+    s.textContent = "تم تأكيد الدفع. روابط التنزيل صالحة لمدة 5 دقائق.";
+
+    document.getElementById("fullAudioLinks").innerHTML =
+      data.audio.map(a =>
+        "<p><a href=\"" + a.url + "\" target=\"_blank\" download>⬇️ تنزيل " +
+        a.file +
+        "</a></p>"
+      ).join("");
+
+  } catch(e) {
+    s.textContent = "صار خطأ بالاتصال.";
+  }
+};
+</script>
